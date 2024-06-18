@@ -1,0 +1,2 @@
+class Doctornew < ApplicationRecord
+end

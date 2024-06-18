@@ -1,0 +1,154 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 10px;
+    }
+
+    th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) td {
+        background-color: #f2f2f2;
+    }
+
+    .welcome-section {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logout-link, .back-button {
+        color: #fff;
+        background-color: #007bff;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .logout-link:hover, .back-button:hover {
+        background-color: #0056b3;
+    }
+
+    .dentist-section {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .dentist-card {
+        flex: 1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
+
+    .dentist-card p {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    .appointment-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .appointment-link:hover {
+        color: #0056b3;
+    }
+
+    .login-prompt {
+        font-size: 18px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .login-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .login-link:hover {
+        color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <a href="/userdash/<%= @usee.id %>" class="back-button">BACK</a>
+    <a href="/user/adrianappoint/<%= @usee.id %>/<%= @dentt.id %>" class="back-button">SET APPOINTMENT</a>
+
+    <div class="schedule-section">
+        <h2>Dr. Adrian Mandras' Schedule</h2>
+        <h1>Month: <%= @dentt.month %></h1>
+        <h1>Week: <%= @dentt.week %></h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AM<br><%= @dentt.monmor %></td>
+                    <td>AM<br><%= @dentt.tuemor %></td>
+                    <td>AM<br><%= @dentt.wedmor %></td>
+                    <td>AM<br><%= @dentt.thurmor %></td>
+                    <td>AM<br><%= @dentt.frimor %></td>
+                </tr>
+                <tr>
+                    <td>PM<br><%= @dentt.monaf %></td>
+                    <td>PM<br><%= @dentt.tueaf %></td>
+                    <td>PM<br><%= @dentt.wedaf %></td>
+                    <td>PM<br><%= @dentt.thuraf %></td>
+                    <td>PM<br><%= @dentt.friaf %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

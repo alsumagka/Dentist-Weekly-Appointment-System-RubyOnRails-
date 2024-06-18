@@ -1,0 +1,155 @@
+<title>Doctor's Schedule</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 18px;
+        color: #333;
+    }
+
+    input[type="text"], select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 14px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 18px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <h1>Doctor's Schedule</h1>
+    <h2>MONTH: <%= @kim.month %></h2>
+    <h2>WEEK: <%= @kim.week %></h2>
+
+    <form action="/user/kimappointna" method="post" id="myForm">
+        <label>Firstname</label>
+        <input type="text" name="fname" value="<%= @userrni.firstname %>" readonly>
+
+        <label>Middlename</label>
+        <input type="text" name="mname" value="<%= @userrni.middlename %>" readonly>
+
+        <label>Lastname</label>
+        <input type="text" name="lname" value="<%= @userrni.lastname %>" readonly>
+
+        <label>Contact Number</label>
+        <input type="text" name="cont" value="<%= @userrni.contact %>" readonly>
+
+        <input type="text" name="dfirst" value="<%= @kim.firstname %>" hidden>
+        <input type="text" name="dmiddle" value="<%= @kim.middlename %>" hidden>
+        <input type="text" name="dlast" value="<%= @kim.lastname %>" hidden>
+        <input type="text" name="mweek" value="<%= @kim.month %>, <%= @kim.week %>" hidden>
+
+
+        <h2>Dr <%= @kim.firstname %>'s Available Schedule This Week</h2>
+        
+        <select name="adlaw">
+            <% if @kim.monmor == 'Available' %>
+                <option value="Monday Morning">Monday Morning</option>
+            <% end %>
+        
+            <% if @kim.monaf == 'Available' %>
+                <option value="Monday Afternoon">Monday Afternoon</option>
+            <% end %>
+        
+        
+            <% if @kim.tuemor == 'Available' %>
+                <option value="Tuesday Morning">Tuesday Morning</option>
+            <% end %>
+        
+            <% if @kim.tueaf == 'Available' %>
+                <option value="Tuesday Afternoon">Tuesday Afternoon</option>
+            <% end %>
+        
+            <% if @kim.wedmor == 'Available' %>
+                <option value="Wednesday Morning">Wednesday Morning</option>
+            <% end %>
+        
+            <% if @kim.wedaf == 'Available' %>
+                <option value="Wednesday Afternoon">Wednesday Afternoon</option>
+            <% end %>
+        
+            <% if @kim.thurmor == 'Available' %>
+                <option value="Thursday Morning">Thursday Morning</option>
+            <% end %>
+        
+            <% if @kim.thuraf == 'Available' %>
+                <option value="Thursday Afternoon">Thursday Afternoon</option>
+            <% end %>
+        
+            <% if @kim.frimor == 'Available' %>
+                <option value="Friday Morning">Friday Morning</option>
+            <% end %>
+        
+            <% if @kim.friaf == 'Available' %>
+                <option value="Friday Afternoon">Friday Afternoon</option>
+            <% end %>
+        </select>
+        
+
+        <input type="submit" value="SUBMIT" onclick="submitForm()">
+    </form>
+</div>
+
+<script>
+    function submitForm() {
+        document.getElementById("myForm").submit();
+
+        window.location.href = "/userdash/<%= @userrni.id %>";
+    }
+</script>

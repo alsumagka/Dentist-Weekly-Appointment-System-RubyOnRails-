@@ -1,0 +1,155 @@
+<title>Doctor's Schedule</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 18px;
+        color: #333;
+    }
+
+    input[type="text"], select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 14px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 18px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <h1>Doctor's Schedule</h1>
+    <h2>MONTH: <%= @adrian.month %></h2>
+    <h2>WEEK: <%= @adrian.week %></h2>
+
+    <form action="/user/adrianappointna" method="post" id="myForm">
+        <label>Firstname</label>
+        <input type="text" name="fname" value="<%= @userr.firstname %>" readonly>
+
+        <label>Middlename</label>
+        <input type="text" name="mname" value="<%= @userr.middlename %>" readonly>
+
+        <label>Lastname</label>
+        <input type="text" name="lname" value="<%= @userr.lastname %>" readonly>
+
+        <label>Contact Number</label>
+        <input type="text" name="cont" value="<%= @userr.contact %>" readonly>
+
+        <input type="text" name="dfirst" value="<%= @adrian.firstname %>" hidden>
+        <input type="text" name="dmiddle" value="<%= @adrian.middlename %>" hidden>
+        <input type="text" name="dlast" value="<%= @adrian.lastname %>" hidden>
+        <input type="text" name="mweek" value="<%= @adrian.month %>, <%= @adrian.week %>" hidden>
+
+
+        <h2>Dr <%= @adrian.firstname %>'s Available Schedule This Week</h2>
+        
+        <select name="adlaw">
+            <% if @adrian.monmor == 'Available' %>
+                <option value="Monday Morning">Monday Morning</option>
+            <% end %>
+        
+            <% if @adrian.monaf == 'Available' %>
+                <option value="Monday Afternoon">Monday Afternoon</option>
+            <% end %>
+        
+        
+            <% if @adrian.tuemor == 'Available' %>
+                <option value="Tuesday Morning">Tuesday Morning</option>
+            <% end %>
+        
+            <% if @adrian.tueaf == 'Available' %>
+                <option value="Tuesday Afternoon">Tuesday Afternoon</option>
+            <% end %>
+        
+            <% if @adrian.wedmor == 'Available' %>
+                <option value="Wednesday Morning">Wednesday Morning</option>
+            <% end %>
+        
+            <% if @adrian.wedaf == 'Available' %>
+                <option value="Wednesday Afternoon">Wednesday Afternoon</option>
+            <% end %>
+        
+            <% if @adrian.thurmor == 'Available' %>
+                <option value="Thursday Morning">Thursday Morning</option>
+            <% end %>
+        
+            <% if @adrian.thuraf == 'Available' %>
+                <option value="Thursday Afternoon">Thursday Afternoon</option>
+            <% end %>
+        
+            <% if @adrian.frimor == 'Available' %>
+                <option value="Friday Morning">Friday Morning</option>
+            <% end %>
+        
+            <% if @adrian.friaf == 'Available' %>
+                <option value="Friday Afternoon">Friday Afternoon</option>
+            <% end %>
+        </select>
+        
+
+        <input type="submit" value="SUBMIT" onclick="submitForm()">
+    </form>
+</div>
+
+<script>
+    function submitForm() {
+        document.getElementById("myForm").submit();
+
+        window.location.href = "/userdash/<%= @userr.id %>";
+    }
+</script>

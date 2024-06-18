@@ -1,0 +1,268 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .table-container {
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) td {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="container">
+    <h2>Set Schedule</h2>
+    <form action="/admin/schedule/<%= @edit.id %>" method="post">
+        <div class="table-container">
+            <label for="month">MONTH</label>
+            <select name="month" id="month">
+                <option value="<%= @edit.month %>"><%= @edit.month %></option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+        </div>
+
+        <div class="table-container">
+            <label for="week">WEEK</label>
+            <select name="week" id="week">
+                <option value="<%= @edit.week %>"><%= @edit.week %></option>
+                <option value="First Week">First Week</option>
+                <option value="Second Week">Second Week</option>
+                <option value="Third Week">Third Week</option>
+                <option value="Fourth Week">Fourth Week</option>
+            </select>
+        </div>
+
+        <div class="table-container">
+            <label for="monday">MONDAY</label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>AM</th>
+                        <th>PM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="monam" id="monam">
+                                <option value="<%= @edit.monmor %>"><%= @edit.monmor %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="monpm" id="monpm">
+                                <option value="<%= @edit.monaf %>"><%= @edit.monaf %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <label for="tuesday">TUESDAY</label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>AM</th>
+                        <th>PM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="tueam" id="tueam">
+                                <option value="<%= @edit.tuemor %>"><%= @edit.tuemor %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="tuepm" id="tuepm">
+                                <option value="<%= @edit.tueaf %>"><%= @edit.tueaf %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <label for="wednesday">WEDNESDAY</label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>AM</th>
+                        <th>PM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="wedam" id="wedam">
+                                <option value="<%= @edit.wedmor %>"><%= @edit.wedmor %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="wedpm" id="wedpm">
+                                <option value="<%= @edit.wedaf %>"><%= @edit.wedaf %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <label for="thursday">THURSDAY</label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>AM</th>
+                        <th>PM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="thuram" id="thuram">
+                                <option value="<%= @edit.thurmor %>"><%= @edit.thurmor %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="thurpm" id="thurpm">
+                                <option value="<%= @edit.thuraf %>"><%= @edit.thuraf %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <label for="friday">FRIDAY</label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>AM</th>
+                        <th>PM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="friam" id="friam">
+                                <option value="<%= @edit.frimor %>"><%= @edit.frimor %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="fripm" id="fripm">
+                                <option value="<%= @edit.friaf %>"><%= @edit.friaf %></option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <input type="submit" value="Save">
+    </form>
+</div>

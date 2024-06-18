@@ -1,0 +1,100 @@
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+  }
+
+  .welcome-section {
+      margin-bottom: 20px;
+  }
+
+  .welcome-section p {
+      font-size: 18px;
+      margin: 10px 0;
+  }
+
+  .logout-link {
+      margin-top: 10px;
+      display: inline-block;
+      color: #fff;
+      background-color: #007bff;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+  }
+
+  .logout-link:hover {
+      background-color: #0056b3;
+  }
+
+  .dentist-section {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px; /* Space between the dentist cards */
+  }
+
+  .dentist-card {
+      flex: 1; /* Make both cards take equal space */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #f9f9f9;
+  }
+
+  .dentist-card p {
+      font-size: 16px;
+      margin: 5px 0;
+  }
+
+  .appointment-link {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+  }
+
+  .appointment-link:hover {
+      color: #0056b3;
+  }
+
+  .login-prompt {
+      font-size: 18px;
+  }
+
+  .login-link {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+  }
+
+  .login-link:hover {
+      color: #0056b3;
+  }
+</style>
+
+
+<% if @naka %>
+  <div class="welcome-section">
+    <p>Welcome <%= @naka.firstname %></p>
+    <%= link_to "Logout", logout_path, method: :delete, class: "logout-link" %>
+  </div>
+
+  <div class="dentist-section">
+    <div class="dentist-card">
+      <p>Hello, I am Dr. Adrian Mandras.</p>
+      <p>Click <%= link_to "Here", "/userappoint2/#{@naka.id}", class: "appointment-link" %> to set an appointment</p>
+      <p>Click <%= link_to "Here", "/user/mandras/#{@naka.id}", class: "appointment-link" %> to see your appointment with Dr. Adrian</p>
+    </div>
+    <div class="dentist-card">
+      <p>Hello, I am Dr. Kim Domingo.</p>
+      <p>Click <%= link_to "Here", "/userappoint1/#{@naka.id}", class: "appointment-link" %> to set an appointment</p>
+      <p>Click <%= link_to "Here", "/user/domingo/#{@naka.id}", class: "appointment-link" %> to see your appointment with Dr. Adrian</p>
+    </div>
+  </div>
+<% else %>
+  <p class="login-prompt">Please login <%= link_to "Here", "/main", class: "login-link" %></p>
+<% end %>
+
